@@ -1,22 +1,30 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useForm, SubmitHandler } from "react-hook-form";
-import * as z from "zod";
-import { Card } from "../ui/card";
-import { Button} from "../ui/button";
-import { Input} from "../ui/input";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IoClose, IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import * as z from "zod";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Send, Sparkles } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const schema = z.object({
   fullName: z.string().min(1, "Full Name is required"),
   gender: z.string().min(1, "Gender is required"),
   admissionClass: z.string().min(1, "Class is required"),
   currentSchool: z.string().min(1, "Current School Name is required"),
-  fatherName: z.string().min(1, "Father Name is required"),
-  motherName: z.string().min(1, "Mother Name is required"),
+  parentName: z.string().min(1, "Parent Name is required"),
   email: z.string().email("Invalid email address"),
   phoneNumber: z.string().min(10, "Phone Number is required"),
   address: z.string().min(1, "Address is required"),
@@ -24,73 +32,209 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export default function AdmissionForm() {
-  const [isOpen, setIsOpen] = useState(true);
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+export default function AdmissionPage() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
+  const { toast } = useToast();
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
-    // Handle form submission
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      await fetch("/api/admissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      toast({
+        title: "Application Submitted",
+        description:
+          "Your admission application has been successfully submitted.",
+      });
+      reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description:
+          "There was an error submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
+  const formFields = [
+    { name: "fullName", placeholder: "Full Name of Child*", type: "input" },
+    {
+      name: "gender",
+      placeholder: "Select Gender*",
+      type: "select",
+      options: ["male", "female", "other"],
+    },
+    {
+      name: "admissionClass",
+      placeholder: "Seeking Admission in Class*",
+      type: "input",
+    },
+    {
+      name: "currentSchool",
+      placeholder: "Current School Name*",
+      type: "input",
+    },
+    { name: "parentName", placeholder: "Parent Name*", type: "input" },
+    { name: "email", placeholder: "Email Id*", type: "input" },
+    { name: "phoneNumber", placeholder: "Phone Number*", type: "input" },
+    { name: "address", placeholder: "Complete Address*", type: "textarea" },
+  ];
 
   return (
-    <>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50"
-        >
-          <Card className="relative w-full max-w-lg p-6 bg-white rounded-lg shadow-md">
-            <button onClick={() => setIsOpen(false)} className="absolute top-2 right-2">
-              <IoClose className="w-6 h-6 text-gray-700" />
-            </button>
-            <h2 className="mb-4 text-xl font-bold text-center text-red-600">Apply for Admission (2024-2025)</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Input {...register("fullName")} placeholder="Full Name of Child*" error={errors.fullName?.message} />
-                </div>
-                <div>
-                  <Input {...register("gender")} placeholder="Gender*" error={errors.gender?.message} />
-                </div>
-                <div>
-                  <Input {...register("admissionClass")} placeholder="Seeking Admission in Class*" error={errors.admissionClass?.message} />
-                </div>
-                <div>
-                  <Input {...register("currentSchool")} placeholder="Current School Name*" error={errors.currentSchool?.message} />
-                </div>
-                <div>
-                  <Input {...register("fatherName")} placeholder="Father Name*" error={errors.fatherName?.message} />
-                </div>
-                <div>
-                  <Input {...register("motherName")} placeholder="Mother Name*" error={errors.motherName?.message} />
-                </div>
-                <div>
-                  <Input {...register("email")} placeholder="Email Id*" error={errors.email?.message} />
-                </div>
-                <div>
-                  <Input {...register("phoneNumber")} placeholder="Phone Number*" error={errors.phoneNumber?.message} />
-                </div>
-                <div className="col-span-2">
-                  <Input {...register("address")} placeholder="Complete Address" error={errors.address?.message} />
-                </div>
-              </div>
-              <Button type="submit" className="w-full mt-4 bg-red-600">Submit</Button>
-            </form>
-          </Card>
-        </motion.div>
-      )}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 p-3 bg-red-600 rounded-full shadow-lg z-50"
+    <div className="min-h-screen bg-gradient-to-b from-red-50 to-white relative overflow-hidden py-12 px-4">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute bg-red-200 rounded-full opacity-20"
+            style={{
+              width: Math.random() * 100 + 50,
+              height: Math.random() * 100 + 50,
+              top: Math.random() * 100 + "%",
+              left: Math.random() * 100 + "%",
+            }}
+            animate={{
+              x: Math.random() * 400 - 200,
+              y: Math.random() * 400 - 200,
+              rotate: Math.random() * 360,
+            }}
+            transition={{
+              duration: Math.random() * 10 + 20,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+        ))}
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-2xl mx-auto"
       >
-        <IoChatbubbleEllipsesOutline className="w-6 h-6 text-white" />
-      </button>
-    </>
+        <Card className="w-full shadow-2xl overflow-hidden">
+          <CardHeader className="bg-red-600 text-white">
+            <CardTitle className="text-2xl font-bold text-center">
+              Apply for Admission (2024-2025)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentStep}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {formFields
+                    .slice(currentStep * 4, (currentStep + 1) * 4)
+                    .map((field) => (
+                      <div key={field.name}>
+                        <Controller
+                          name={field.name as keyof FormData}
+                          control={control}
+                          render={({ field: controllerField }) =>
+                            field.type === "select" ? (
+                              <Select
+                                onValueChange={controllerField.onChange}
+                                value={controllerField.value}
+                              >
+                                <SelectTrigger className="border-red-200 focus:border-red-500">
+                                  <SelectValue
+                                    placeholder={field.placeholder}
+                                  />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {field.options?.map((option) => (
+                                    <SelectItem key={option} value={option}>
+                                      {option.charAt(0).toUpperCase() +
+                                        option.slice(1)}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            ) : field.type === "textarea" ? (
+                              <Textarea
+                                {...controllerField}
+                                placeholder={field.placeholder}
+                                className="border-red-200 focus:border-red-500"
+                              />
+                            ) : (
+                              <Input
+                                {...controllerField}
+                                placeholder={field.placeholder}
+                                className="border-red-200 focus:border-red-500"
+                                type={field.name === "email" ? "email" : "text"}
+                              />
+                            )
+                          }
+                        />
+                        {errors[field.name as keyof FormData] && (
+                          <p className="text-red-500 text-sm mt-1">
+                            {errors[field.name as keyof FormData]?.message}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="flex justify-between mt-6">
+                {currentStep > 0 && (
+                  <Button
+                    type="button"
+                    onClick={() => setCurrentStep((prev) => prev - 1)}
+                    className="bg-gray-300 hover:bg-gray-400 text-gray-800"
+                  >
+                    Previous
+                  </Button>
+                )}
+                {currentStep < formFields.length / 4 - 1 ? (
+                  <Button
+                    type="button"
+                    onClick={() => setCurrentStep((prev) => prev + 1)}
+                    className="bg-red-600 hover:bg-red-700 text-white ml-auto"
+                  >
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    className="bg-red-600 hover:bg-red-700 text-white ml-auto"
+                  >
+                    Submit Application
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      {/* Decorative element */}
+      <motion.div
+        className="absolute bottom-4 right-4 text-red-600"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+      >
+        <Sparkles size={32} />
+      </motion.div>
+    </div>
   );
 }
