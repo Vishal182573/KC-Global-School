@@ -4,6 +4,9 @@ import connectDb from "./config/dbconnection.js";
 import cors from "cors";
 import uploadKeRoutes from './routes/uploadRoutes.js';
 import formSubmissionKeroutes from './routes/AdmissionformRoutes.js'
+import notificationRoutes from "./routes/NotificationRoutes.js";
+import galleryRoutes from "./routes/GalleryRoutes.js";
+import coursorelRoutes from "./routes/CoursorelRoutes.js";
 import {FRONTEND_URL} from "./constants.js"
 
 connectDb();
@@ -28,6 +31,9 @@ app.use(
 
 app.use("/api/image",uploadKeRoutes);
 app.use("/api/form",formSubmissionKeroutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/galleries", galleryRoutes);
+app.use("/api/coursorels", coursorelRoutes);
 app.get("/",(req,res)=>{
   res.send("server is working");
 })
