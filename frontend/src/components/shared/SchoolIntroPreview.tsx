@@ -1,23 +1,97 @@
-"use client"
-import { Card } from "@/components/ui/card"
-import { motion } from "framer-motion"
-import { Button } from "../ui/button"
+"use client";
+import { Card } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, GraduationCap, Users, Globe } from "lucide-react";
+import Image from "next/image";
 
 export default function SchoolIntroduction() {
+  const stats = [
+    { icon: <GraduationCap size={24} />, label: "Students", value: "100+" },
+    { icon: <Users size={24} />, label: "Faculty", value: "30+" },
+    { icon: <Globe size={24} />, label: "Global Partners", value: "5+" },
+  ];
+
   return (
     <motion.div
-    //   initial={{ opacity: 0, y: 50 }}
-    //   whileInView={{ opacity: 1, y: 0 }}
-    //   transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto px-4 py-16"
     >
-      <Card className="p-6 bg-white shadow-md rounded-lg">
-        <div className="text-md text-red-800 ">Introduction</div>
-        <h2 className="text-3xl font-bold text-red-600">KC GLOBAL School</h2>
-        <p className="mt-4 text-gray-600">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus iure non velit aliquam aliquid officia ipsam ex corporis accusantium culpa quasi, enim tenetur, ad sed! Nulla ab repudiandae eligendi sequi sapiente quod quae illo animi sed quis. Nesciunt labore corrupti reiciendis repudiandae ut laboriosam recusandae minima earum, nemo commodi eligendi odit enim. Adipisci, debitis suscipit. Necessitatibus ipsa dolorem natus numquam voluptates et unde ipsum soluta, totam dolore quaerat praesentium eum mollitia officia in. Voluptates provident ratione facilis illo libero fuga omnis saepe laudantium nisi nesciunt laboriosam at excepturi, quasi praesentium.
-        </p>
-        <Button className="mt-6 bg-red-600 text-white">Read More</Button>
+      <Card className="p-8 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <motion.div
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="text-sm font-semibold text-red-600 mb-2">
+              Introduction
+            </div>
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              KC GLOBAL School
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              KC GLOBAL School is a premier educational institution committed to
+              nurturing global citizens and future leaders. With a focus on
+              holistic development, we provide a world-class education that
+              blends academic excellence with character building and cultural
+              awareness.
+            </p>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Our state-of-the-art facilities, experienced faculty, and
+              innovative curriculum create an environment where students can
+              explore their potential and develop skills for the 21st century.
+            </p>
+            <Button className="bg-red-600 text-white hover:bg-red-700 transition-colors">
+              Learn More <ArrowRight size={16} className="ml-2" />
+            </Button>
+          </motion.div>
+          <motion.div
+            className="lg:w-1/2"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="relative h-64 lg:h-full rounded-lg overflow-hidden">
+              <Image
+                src="https://res.cloudinary.com/drwyju0q7/image/upload/v1720618171/uploads/school-building.jpg"
+                alt="KC Global School Building"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          </motion.div>
+        </div>
+        <motion.div
+          className="flex flex-wrap justify-center gap-8 mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="flex items-center space-x-4"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="bg-red-100 p-3 rounded-full text-red-600">
+                {stat.icon}
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-gray-800">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </Card>
     </motion.div>
-  )
+  );
 }
