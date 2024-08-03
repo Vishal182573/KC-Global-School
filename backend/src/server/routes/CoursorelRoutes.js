@@ -1,16 +1,10 @@
 import express from "express";
-import {
-    addCoursorel,
-    deleteCoursorel,
-    getCoursorelById,
-    getAllCoursorels
-} from "../controllers/coursorelController.js";
+import { addImage, deleteImage, getAllImages } from "../controllers/coursorelController.js";
 
 const router = express.Router();
 
-router.post("/add", addCoursorel);
-router.delete("/:id", deleteCoursorel);
-router.get("/:id", getCoursorelById);
-router.get("/", getAllCoursorels);
+router.post("/add", addImage);
+router.delete("/:id", deleteImage);
+router.get("/", getAllImages);
 
 export default router;

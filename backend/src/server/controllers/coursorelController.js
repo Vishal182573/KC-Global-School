@@ -2,12 +2,12 @@ import asyncHandler from "express-async-handler";
 import Coursorel from "../models/CoursorelModel.js";
 
 // Add a new carousel
-const addCoursorel = asyncHandler(async (req, res) => {
+const addImage = asyncHandler(async (req, res) => {
     try {
-        const { images } = req.body;
-
+        const { image } = req.body;
+        console.log(image);
         const newCoursorel = new Coursorel({
-            images
+            image
         });
         const savedCoursorel = await newCoursorel.save();
         res.status(200).json(savedCoursorel);
@@ -17,7 +17,7 @@ const addCoursorel = asyncHandler(async (req, res) => {
 });
 
 // Delete a carousel by ID
-const deleteCoursorel = asyncHandler(async (req, res) => {
+const deleteImage = asyncHandler(async (req, res) => {
     try {
         const coursorelId = req.params.id;
 
@@ -31,23 +31,9 @@ const deleteCoursorel = asyncHandler(async (req, res) => {
     }
 });
 
-// Get a carousel by ID
-const getCoursorelById = asyncHandler(async (req, res) => {
-    try {
-        const coursorelId = req.params.id;
-
-        const coursorel = await Coursorel.findById(coursorelId);
-        if (!coursorel) {
-            return res.status(404).json({ message: "Coursorel not found" });
-        }
-        res.status(200).json(coursorel);
-    } catch (err) {
-        return res.status(500).json({ message: "Internal Server Error" });
-    }
-});
 
 // Get all carousels
-const getAllCoursorels = asyncHandler(async (req, res) => {
+const getAllImages = asyncHandler(async (req, res) => {
     try {
         const coursorels = await Coursorel.find().sort({ createdAt: -1 });
         res.status(200).json(coursorels);
@@ -57,8 +43,7 @@ const getAllCoursorels = asyncHandler(async (req, res) => {
 });
 
 export {
-    addCoursorel,
-    deleteCoursorel,
-    getCoursorelById,
-    getAllCoursorels
+    addImage,
+    deleteImage,
+    getAllImages
 };

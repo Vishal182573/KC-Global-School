@@ -5,7 +5,6 @@ import Gallery from "../models/GalleryModel.js";
 const addGallery = asyncHandler(async (req, res) => {
     try {
         const { title, images } = req.body;
-
         const newGallery = new Gallery({
             title,
             images
