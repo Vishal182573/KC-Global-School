@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, GraduationCap, Users, Globe } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { SCHOOLIMAGE } from "../../../public";
 
 export default function SchoolIntroduction() {
   const stats = [
@@ -27,7 +29,7 @@ export default function SchoolIntroduction() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="text-sm font-semibold text-red-600 mb-2">
+            <div className="text-sm font-semibold text-blue-600 mb-2">
               Introduction
             </div>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
@@ -45,9 +47,11 @@ export default function SchoolIntroduction() {
               innovative curriculum create an environment where students can
               explore their potential and develop skills for the 21st century.
             </p>
-            <Button className="bg-red-600 text-white hover:bg-red-700 transition-colors">
+            <Link href={"/about-us"}>
+            <Button className="bg-blue-600 text-white hover:bg-blue-700 transition-colors" >
               Learn More <ArrowRight size={16} className="ml-2" />
             </Button>
+            </Link>
           </motion.div>
           <motion.div
             className="lg:w-1/2"
@@ -57,7 +61,7 @@ export default function SchoolIntroduction() {
           >
             <div className="relative h-64 lg:h-full rounded-lg overflow-hidden">
               <Image
-                src="https://res.cloudinary.com/drwyju0q7/image/upload/v1720618171/uploads/school-building.jpg"
+                src={SCHOOLIMAGE}
                 alt="KC Global School Building"
                 layout="fill"
                 objectFit="cover"
@@ -79,7 +83,7 @@ export default function SchoolIntroduction() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="bg-red-100 p-3 rounded-full text-red-600">
+              <div className="bg-blue-100 p-3 rounded-full text-blue-600">
                 {stat.icon}
               </div>
               <div>

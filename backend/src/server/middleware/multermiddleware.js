@@ -1,4 +1,4 @@
-import multer from "multer"
+import multer from "multer";
 import path from 'path';
 
 // Multer config
@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const fileTypes = /jpeg|jpg|png|gif/;
+  const fileTypes = /jpeg|jpg|png|gif|heic/;
   const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = fileTypes.test(file.mimetype);
 

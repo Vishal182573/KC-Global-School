@@ -3,22 +3,32 @@ import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Quote } from "lucide-react";
+import { CHAIRMEN } from "../../../public";
 
-interface Person {
-  imageSrc: any;
-  imageAlt: string;
-  title: string;
-  message: string;
-  name: string;
-  designation: string;
-  reverse: boolean;
-}
 
-interface PeopleInfoProps {
-  people: Person[];
-}
-
-export default function PeopleInfo({ people }: PeopleInfoProps) {
+export default function PeopleInfo() {
+  const people = [
+    {
+      imageSrc: CHAIRMEN,
+      imageAlt: "Chairman",
+      title: "Chairman Message",
+      message:
+        "Welcome to KC Global School! As Chairman, I am committed to fostering an environment where excellence, innovation, and holistic development thrive. Our goal is to empower every student with knowledge, values, and skills for a bright future. We strive to create a nurturing atmosphere that encourages curiosity and creativity. Together, let's embark on this journey of learning, growth, and success. Thank you for being a part of our KC Global School family",
+      name: "Mr. Ram Kumar Mavi",
+      designation: "Chairman, Kc Global School",
+      reverse: false,
+    },
+    {
+      imageSrc: "https://drive.google.com/uc?export=download&id=18u9j5QSRB9-P0zONh1PmHRS7QkSI0XM0",
+      imageAlt: "Principal",
+      title: "Principal Message",
+      message:
+        "Welcome to KC Global School! As the Principal, I am dedicated to guiding our students toward academic excellence and personal growth. Our school is a place where every child is encouraged to explore, learn, and thrive in a supportive environment. We emphasize not just academic achievements but also the development of character, leadership, and compassion. Together, we will build a strong foundation for a successful and fulfilling future",
+      name: "Ms. Priya Sharma",
+      designation: "Principal, Kc Global School",
+      reverse: true,
+    },
+  ];
   return (
     <div className="space-y-16">
       <motion.div
@@ -82,7 +92,7 @@ export default function PeopleInfo({ people }: PeopleInfoProps) {
                   </p>
                 </div>
                 <motion.div
-                  className="border-l-4 border-red-600 pl-6 py-2"
+                  className="border-l-4 border-blue-600 pl-6 py-2"
                   whileHover={{ x: 10 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >

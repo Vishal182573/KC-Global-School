@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, ChevronRight, Trash2 } from "lucide-react";
+import { Bell, Calendar, Trash2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { Badge } from "@/components/ui/badge";
+import axios from "axios";
+import { BACKEND_URL } from "@/lib/constant";
 
 interface Notification {
   id: number;
@@ -16,9 +18,14 @@ interface Notification {
 }
 
 const fetchNotifications = async () => {
-  // api call for notifications
-  const response = await fetch("/api/notifications");
-  return response.json();
+  try {
+    const response = await axios.get(`${BACKEND_URL}/api/notifications`);
+    if (response.status == 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.error('Error fetching notifications:', error);
+  }
 };
 
 const Notifications: React.FC = () => {
@@ -33,74 +40,56 @@ const Notifications: React.FC = () => {
     getNotifications();
   }, []);
 
-  const handleDelete = async (id: number) => {
-    // api call for delete
-    await fetch(`/api/notifications/${id}`, { method: "DELETE" });
-    setNotifications(notifications.filter((n) => n.id !== id));
-    toast({
-      title: "Notification deleted",
-      description: "The notification has been successfully removed.",
-    });
-  };
-
   return (
-    <Card className="h-96 overflow-y-auto bg-gradient-to-b from-purple-50 to-white shadow-xl">
-      <CardHeader className="sticky top-0 bg-white bg-opacity-90 z-10">
-        <CardTitle className="text-2xl font-bold text-purple-700 flex items-center">
-          <Bell className="mr-2" />
+    <Card className="h-[calc(100vh-4rem)] overflow-hidden bg-gradient-to-b from-purple-50 to-white shadow-2xl rounded-xl">
+      <CardHeader className="sticky top-0 bg-white bg-opacity-90 z-10 border-b border-purple-100">
+        <CardTitle className="text-3xl font-bold text-purple-700 flex items-center">
+          <Bell className="mr-3 h-8 w-8" />
           Recent Notices
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="overflow-y-auto h-full pb-6">
         <AnimatePresence>
-          {notifications.map((notification) => (
-            <motion.div
-              key={notification.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="mb-4"
-            >
-              <Card className="bg-white hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-4">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-semibold text-gray-800">
-                        {notification.title}
-                      </h3>
-                      <p className="text-sm text-gray-600 mt-1">
+          {notifications.length > 0 ? (
+            notifications.map((notification) => (
+              <motion.div
+                key={notification.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="mb-4"
+              >
+                <Card className="bg-white hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                  <CardContent className="p-4">
+                    <div className="flex flex-col">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-semibold text-lg text-purple-800">
+                          {notification.title}
+                        </h3>
+                        <Badge variant="secondary" className="text-xs px-2 py-1 bg-purple-100 text-purple-700">
+                          <Calendar className="mr-1 h-3 w-3" />
+                          {notification.date}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">
                         {notification.description}
                       </p>
-                      <div className="flex items-center mt-2">
-                        <Badge variant="secondary">{notification.date}</Badge>
-                      </div>
                     </div>
-                    <div className="flex">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-purple-600 hover:text-purple-800 hover:bg-purple-100"
-                        onClick={() =>
-                          console.log(`Open notification ${notification.id}`)
-                        }
-                      >
-                        <ChevronRight size={20} />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-red-600 hover:text-red-800 hover:bg-red-100"
-                        onClick={() => handleDelete(notification.id)}
-                      >
-                        <Trash2 size={20} />
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex flex-col items-center justify-center h-full text-gray-500"
+            >
+              <Bell className="h-16 w-16 mb-4 text-purple-300" />
+              <p className="text-lg">No new notifications</p>
             </motion.div>
-          ))}
+          )}
         </AnimatePresence>
       </CardContent>
     </Card>

@@ -59,8 +59,8 @@ export default function CoCurricular() {
           className="relative h-[400px] rounded-xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="/images/co-curricular-hero.jpg"
-            alt="Co-Curricular Activities at Modern School"
+            src="https://drive.google.com/uc?export=download&id=18qTzbemwhvy26H2RydBrKKNfN7eAhbAZ"
+            alt="Co-Curricular Activities at KC Global School"
             layout="fill"
             objectFit="cover"
           />
@@ -97,6 +97,52 @@ export default function CoCurricular() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="bg-purple-50 rounded-xl p-8 mb-16"
+      >
+        <h2 className="text-3xl font-semibold text-purple-600 mb-6 text-center">
+          Our Approach to Co-Curricular Activities
+        </h2>
+        <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+          <p>
+            At KC Global School, we believe that education extends beyond the
+            classroom. Our co-curricular activities are designed to enrich
+            students' learning experiences and help them develop a wide range
+            of skills. These activities provide students with opportunities to
+            explore their interests, discover new talents, and build essential
+            life skills such as teamwork, leadership, and time management.
+          </p>
+          <p>
+            We offer a diverse array of co-curricular programs, including music,
+            dance, drama, art, debate, and public speaking. These activities
+            not only foster creativity and self-expression but also boost
+            confidence and communication skills. Our dedicated instructors and
+            coaches work closely with students, encouraging them to pursue their
+            passions and excel in their chosen areas.
+          </p>
+          <p>
+            Participation in co-curricular activities also promotes social
+            interaction and helps students develop a sense of community and
+            belonging. Whether it's participating in a school play, joining a
+            debate club, or competing in art exhibitions, students at KC Global
+            School have the chance to showcase their talents and gain
+            recognition for their achievements.
+          </p>
+          <p>
+            We encourage every student to get involved in co-curricular
+            activities, as they are an integral part of our holistic approach to
+            education. These experiences complement academic learning and
+            prepare students to be well-rounded individuals ready to take on
+            the challenges of the future. At KC Global School, we celebrate the
+            diversity of talents and interests that our students bring to the
+            school community.
+          </p>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }

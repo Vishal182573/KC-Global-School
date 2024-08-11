@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Menu, ChevronDown } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, ChevronDown, GalleryVerticalIcon, Info, ChevronUp, ArrowUpRight, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,48 +12,63 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
-import { Home, Info, Newspaper, Building, Phone, Mail } from "lucide-react";
+import { Home, Building, Phone, Mail } from "lucide-react";
+import { LOGO } from "../../../public";
 
 export default function Navbar() {
+  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
+
+  const toggleDropdown = (id: string) => {
+    setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
   const navItems = [
     {
       name: "Home",
       id: "home",
       icon: <Home size={18} />,
+      link: "/",
+    },
+    {
+      name: "About Us",
+      id: "about-us",
+      icon: <Info size={18} />,
       subItems: [
+        { name: "About Us", link: "/about-us" },
         { name: "General Info", link: "/general-info" },
-        { name: "School Calendar", link: "/calendar" },
+        { name: "Messages", link: "/messages" },
         { name: "News & Events", link: "/news-events" },
       ],
     },
     {
-      name: "About School",
-      id: "about-school",
-      icon: <Info size={18} />,
-      subItems: [
-        { name: "About Us", link: "/about-us" },
-        { name: "History", link: "/about/history" },
-        { name: "Vision & Mission", link: "/about/mission" },
-      ],
-    },
-    {
-      name: "Facilities",
+      name: "Infrastructure",
       id: "facilities",
       icon: <Building size={18} />,
       link: "/facilities",
     },
     {
-      name: "Messages",
-      id: "messages",
-      icon: <Mail size={18} />,
-      link: "/messages",
+      name: "Admission",
+      id: "admission",
+      icon: <GraduationCap size={18} />,
+      subItems: [
+        { name: "Admission Process", link: "/admission" },
+        { name: "Documents Required", link: "/documents" },
+        { name: "Fee Structure", link: "/fee-structure" },
+        { name: "Admission Form", link: "/admissionForm" },
+      ],
+    },
+    {
+      name: "Gallery",
+      id: "gallery",
+      icon: <GalleryVerticalIcon size={18} />,
+      link: "/gallery",
     },
     {
       name: "Contact Us",
       id: "contact-us",
-      icon: <Phone size={18} />,
+      icon: <Mail size={18} />,
       link: "/contact-us",
-    },
+    }
   ];
 
   return (
@@ -63,20 +78,18 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg p-4 w-full flex justify-between items-center sticky top-0 z-50"
     >
-      <div className="flex items-center space-x-4">
-        <Image
-          src="https://res.cloudinary.com/drwyju0q7/image/upload/v1720618171/uploads/yilkao7usha76fkrmwvy.png"
-          alt="KC Global School Logo"
-          width={60}
-          height={60}
-          className="rounded-full shadow-md"
-        />
-        <h1 className="text-2xl font-bold text-gray-800">KC GLOBAL SCHOOL</h1>
-      </div>
+      <Link href={"/"}>
+        <div className="flex items-center space-x-4 cursor-pointer">
+          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+            <Image src={LOGO} alt="School-logo" width={400} height={200} className="rounded-full h-24 w-24 object-contain"/>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-800">KC GLOBAL SCHOOL</h1>
+        </div>
+      </Link>
       <nav className="hidden lg:flex space-x-2">
         {navItems.map((item) =>
           item.subItems ? (
-            <DropdownMenu key={item.id}>
+            <DropdownMenu key={item.id} onOpenChange={() => toggleDropdown(item.id)}>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
@@ -84,7 +97,17 @@ export default function Navbar() {
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>
-                  <ChevronDown size={16} className="ml-1" />
+                  <AnimatePresence initial={false} mode="wait">
+                    <motion.div
+                      key={openDropdowns[item.id] ? "chevronUp" : "chevronDown"}
+                      initial={{ rotate: 0 }}
+                      animate={{ rotate: openDropdowns[item.id] ? 180 : 0 }}
+                      exit={{ rotate: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ChevronDown size={16} className="ml-1" />
+                    </motion.div>
+                  </AnimatePresence>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white rounded-md shadow-lg">
@@ -92,9 +115,17 @@ export default function Navbar() {
                   <DropdownMenuItem key={subItem.name} className="p-0">
                     <Link
                       href={subItem.link}
-                      className="w-full hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-3 block"
+                      className="w-full hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-3  flex items-center justify-between group"
                     >
-                      {subItem.name}
+                      <span>{subItem.name}</span>
+                      <motion.div
+                        className="opacity-0 group-hover:opacity-100"
+                        initial={{ rotate: -45, x: -5 }}
+                        animate={{ rotate: 0, x: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ArrowUpRight size={16} />
+                      </motion.div>
                     </Link>
                   </DropdownMenuItem>
                 ))}
@@ -104,7 +135,7 @@ export default function Navbar() {
             <Link key={item.id} href={item.link}>
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 flex items-center"
+                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 flex items-center group"
               >
                 {item.icon}
                 <span className="ml-2">{item.name}</span>
@@ -124,20 +155,40 @@ export default function Navbar() {
             {navItems.map((item) => (
               <DropdownMenuItem key={item.id} className="p-0">
                 {item.subItems ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="flex items-center w-full p-3">
-                      {item.icon}
-                      <span className="ml-2">{item.name}</span>
-                      <ChevronDown size={16} className="ml-auto" />
+                  <DropdownMenu onOpenChange={() => toggleDropdown(item.id)}>
+                    <DropdownMenuTrigger className="flex items-center w-full p-3 justify-between">
+                      <div className="flex items-center">
+                        {item.icon}
+                        <span className="ml-2">{item.name}</span>
+                      </div>
+                      <AnimatePresence initial={false} mode="wait">
+                        <motion.div
+                          key={openDropdowns[item.id] ? "chevronUp" : "chevronDown"}
+                          initial={{ rotate: 0 }}
+                          animate={{ rotate: openDropdowns[item.id] ? 180 : 0 }}
+                          exit={{ rotate: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronDown size={16} />
+                        </motion.div>
+                      </AnimatePresence>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {item.subItems.map((subItem) => (
                         <DropdownMenuItem key={subItem.name} className="p-0">
                           <Link
                             href={subItem.link}
-                            className="w-full p-3 block"
+                            className="w-full p-3 flex items-center justify-between group"
                           >
-                            {subItem.name}
+                            <span>{subItem.name}</span>
+                            <motion.div
+                              className="opacity-0 group-hover:opacity-100"
+                              initial={{ rotate: -45, x: -5 }}
+                              animate={{ rotate: 0, x: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <ArrowUpRight size={16} />
+                            </motion.div>
                           </Link>
                         </DropdownMenuItem>
                       ))}
@@ -146,10 +197,20 @@ export default function Navbar() {
                 ) : (
                   <Link
                     href={item.link}
-                    className="flex items-center w-full p-3"
+                    className="flex items-center w-full p-3 justify-between group"
                   >
-                    {item.icon}
-                    <span className="ml-2">{item.name}</span>
+                    <div className="flex items-center">
+                      {item.icon}
+                      <span className="ml-2">{item.name}</span>
+                    </div>
+                    <motion.div
+                      className="opacity-0 group-hover:opacity-100"
+                      initial={{ rotate: -45, x: -5 }}
+                      animate={{ rotate: 0, x: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowUpRight size={16} />
+                    </motion.div>
                   </Link>
                 )}
               </DropdownMenuItem>

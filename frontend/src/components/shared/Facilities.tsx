@@ -9,7 +9,8 @@ import {
   FlaskConical,
   BookOpen,
   Building,
-  Shapes,
+  Music,
+  PlayCircle
 } from "lucide-react";
 
 interface GalleryItem {
@@ -24,42 +25,42 @@ interface GalleryItem {
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: "Computer Lab",
+    title: "Classroom",
     subtitle: "Modern Tech",
     description: "Equipped with the latest technology for students.",
-    imageUrl: "https://via.placeholder.com/400x200",
+    imageUrl: "https://drive.google.com/uc?export=download&id=18XaJe-7INknqAnn_qqw6_huA8yjRG7Pz",
     icon: <Computer className="h-6 w-6" />,
   },
   {
     id: 2,
-    title: "Science Lab",
-    subtitle: "Experiments",
-    description: "A place to explore scientific principles.",
-    imageUrl: "https://via.placeholder.com/400x200",
-    icon: <FlaskConical className="h-6 w-6" />,
+    title: "Music Class",
+    subtitle: "Musical Creativity",
+    description: "A place to explore musical talents and creativity.",
+    imageUrl: "https://drive.google.com/uc?export=download&id=18oePg4kNdjtD1NAamHJAiSShoG6Df_eb",
+    icon: <Music className="h-6 w-6" />,
   },
   {
     id: 3,
-    title: "Library",
+    title: "Computer Lab",
     subtitle: "Knowledge Hub",
-    description: "A vast collection of books for students.",
-    imageUrl: "https://via.placeholder.com/400x200",
-    icon: <BookOpen className="h-6 w-6" />,
+    description: "A place to enhance computing skills.",
+    imageUrl: "https://drive.google.com/uc?export=download&id=18g4J63kZ_KSR4rRqaHw5H6KG2wWt6w8n",
+    icon: <Computer className="h-6 w-6" />,
   },
   {
     id: 4,
-    title: "Sports Complex",
-    subtitle: "Physical Education",
-    description: "State-of-the-art facilities for various sports.",
-    imageUrl: "https://via.placeholder.com/400x200",
-    icon: <Shapes className="h-6 w-6" />,
+    title: "Library",
+    subtitle: "Knowledge Hub",
+    description: "A vast collection of books for students.",
+    imageUrl: "https://drive.google.com/uc?export=download&id=18gg_ddy9wh5WutASX9SVkMo-9xWzIFgG",
+    icon: <BookOpen className="h-6 w-6" />,
   },
   {
     id: 5,
-    title: "Auditorium",
+    title: "Activity Room",
     subtitle: "Events & Performances",
     description: "A spacious venue for school events and performances.",
-    imageUrl: "https://via.placeholder.com/400x200",
+    imageUrl: "https://drive.google.com/uc?export=download&id=18l39iTY23upmFW3iM9Afd9v-7CUXpMRA",
     icon: <Building className="h-6 w-6" />,
   },
 ];
@@ -78,10 +79,7 @@ export default function Facilities() {
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-4xl font-bold mb-2 text-purple-600">
-          Our Facilities
-        </h1>
-        <h2 className="text-2xl mb-4 text-gray-700">KC GLOBAL SCHOOL</h2>
+        <h2 className="text-4xl font-bold mb-2 text-purple-600">KC GLOBAL SCHOOL</h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
           Our school campus boasts modern amenities, spacious environments, and
           eco-friendly features that create an inspiring atmosphere for our

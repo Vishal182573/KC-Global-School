@@ -23,7 +23,17 @@ const SubmitForm = asyncHandler(async (req, res) => {
     }
 });
 
+const getEnquiries = asyncHandler(async(req,res)=>{
+    try{
+        const enquires = await Form.find();
+        return res.status(200).json(enquires);
+    }catch(err){
+        return res.status(500).json({message:"Internal Server Error"});
+    }
+})
+
 export {
-    SubmitForm
+    SubmitForm,
+    getEnquiries,
 };
 

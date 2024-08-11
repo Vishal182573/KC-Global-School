@@ -14,8 +14,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 
+interface coursorelProps{
+  image:string,
+  _id:string,
+}
+
 interface HeroCarouselProps {
-  images: string[];
+  images: coursorelProps[];
 }
 
 export function HeroCarousel({ images }: HeroCarouselProps) {
@@ -24,7 +29,7 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
   const handleClick = () => {
     router.push("/about-us");
   };
-
+  console.log(images[0])
   return (
     <motion.section
       initial={{ opacity: 0, x: -50 }}
@@ -49,7 +54,7 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
             <CarouselItem key={index} className="relative">
               <Image
                 alt={`Slide ${index + 1}`}
-                src={image}
+                src={image.image}
                 width={1200}
                 height={600}
                 className="object-cover w-full h-[80vh]"
@@ -71,7 +76,7 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
                   <Button
                     onClick={handleClick}
                     size="lg"
-                    className="bg-red-500 hover:bg-red-600 text-white font-bold rounded-full transition duration-300"
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full transition duration-300"
                   >
                     Know More About Us
                     <ChevronRight className="ml-2 h-4 w-4" />

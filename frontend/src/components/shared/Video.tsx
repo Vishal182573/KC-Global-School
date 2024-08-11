@@ -7,7 +7,7 @@ const VideoPreview: React.FC = () => {
   return (
     <Card >
       <div className="relative">
-        <video controls className="w-full h-96 rounded-lg">
+        <video controls className="w-full h-full rounded-lg">
           <source src="/path/to/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
