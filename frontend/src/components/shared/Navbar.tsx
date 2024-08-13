@@ -2,7 +2,15 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, ChevronDown, GalleryVerticalIcon, Info, ChevronUp, ArrowUpRight, GraduationCap } from "lucide-react";
+import {
+  Menu,
+  ChevronDown,
+  GalleryVerticalIcon,
+  Info,
+  ChevronUp,
+  ArrowUpRight,
+  GraduationCap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,11 +24,18 @@ import { Home, Building, Phone, Mail } from "lucide-react";
 import { LOGO } from "../../../public";
 
 export default function Navbar() {
-  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
+  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
   const toggleDropdown = (id: string) => {
-    setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
+    setOpenDropdowns((prev) => ({ ...prev, [id]: !prev[id] }));
   };
-  
+
+  const closeAllDropdowns = () => {
+    setOpenDropdowns({});
+  };
+
   const navItems = [
     {
       name: "Home",
@@ -67,7 +82,7 @@ export default function Navbar() {
       id: "contact-us",
       icon: <Mail size={18} />,
       link: "/contact-us",
-    }
+    },
   ];
 
   return (
@@ -77,10 +92,16 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="bg-white shadow-lg p-4 w-full flex justify-between items-center sticky top-0 z-50"
     >
-      <Link href={"/"}>
+      <Link href={"/"} onClick={closeAllDropdowns}>
         <div className="flex items-center space-x-4 cursor-pointer">
           <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-            <Image src={LOGO} alt="School-logo" width={400} height={200} className="rounded-full h-24 w-24 object-contain"/>
+            <Image
+              src={LOGO}
+              alt="School-logo"
+              width={400}
+              height={200}
+              className="rounded-full h-24 w-24 object-contain"
+            />
           </div>
           <h1 className="text-2xl font-bold text-gray-800">KC GLOBAL SCHOOL</h1>
         </div>
@@ -111,7 +132,11 @@ export default function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white rounded-md shadow-lg">
                 {item.subItems.map((subItem) => (
-                  <DropdownMenuItem key={subItem.name} className="p-0">
+                  <DropdownMenuItem
+                    key={subItem.name}
+                    className="p-0"
+                    onSelect={closeAllDropdowns}
+                  >
                     <Link
                       href={subItem.link}
                       className="w-full hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-3  flex items-center justify-between group"
@@ -131,7 +156,7 @@ export default function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Link key={item.id} href={item.link}>
+            <Link key={item.id} href={item.link} onClick={closeAllDropdowns}>
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 flex items-center group"
@@ -152,7 +177,11 @@ export default function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             {navItems.map((item) => (
-              <DropdownMenuItem key={item.id} className="p-0">
+              <DropdownMenuItem
+                key={item.id}
+                className="p-0"
+                onSelect={closeAllDropdowns}
+              >
                 {item.subItems ? (
                   <DropdownMenu onOpenChange={() => toggleDropdown(item.id)}>
                     <DropdownMenuTrigger className="flex items-center w-full p-3 justify-between">
@@ -174,7 +203,11 @@ export default function Navbar() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {item.subItems.map((subItem) => (
-                        <DropdownMenuItem key={subItem.name} className="p-0">
+                        <DropdownMenuItem
+                          key={subItem.name}
+                          className="p-0"
+                          onSelect={closeAllDropdowns}
+                        >
                           <Link
                             href={subItem.link}
                             className="w-full p-3 flex items-center justify-between group"

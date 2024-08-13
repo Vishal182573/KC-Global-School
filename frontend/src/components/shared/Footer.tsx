@@ -12,7 +12,7 @@ export default function Footer() {
     { name: 'Faculty Messages', url: '/messages' },
     { name: 'Campus Infrastructure', url: '/facilities' },
     { name: 'News & Events', url: '/news-events' },
-    { name: 'gallery', url: '/gallery' },
+    { name: 'Gallery', url: '/gallery' },
     { name: 'Contact', url: '/contact-us' },
   ];
   return (
@@ -54,7 +54,7 @@ export default function Footer() {
             {[
               { icon: FaFacebook, color: 'text-blue-500', href: 'https://www.facebook.com/kcglobalschoolgn', title: "KC Global Facebook" },
               { icon: FaInstagram, color: 'text-pink-500', href: 'https://www.instagram.com/kc_global_school?igsh=ZGVrMTcwcjdiZXpq', title: "KC Global Instagram" },
-              { icon: FaYoutube, color: 'text-red-500', href: '/', title: "KC Global Facebook" },
+              { icon: FaYoutube, color: 'text-red-500', href: '/', title: "KC Global Youtube" },
             ].map(({ icon: Icon, color, href, title }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={`${color} hover:opacity-75 transition-opacity flex space-x-2`}>
                 <Icon size={28} />

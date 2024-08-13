@@ -65,7 +65,7 @@ export default function Home() {
 
         <Separator className="my-16" />
 
-        <motion.section {...fadeInUp} className="mb-16">
+        <motion.section {...fadeInUp} >
           <SchoolFacilities/>
         </motion.section>
         
