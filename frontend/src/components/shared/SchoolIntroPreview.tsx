@@ -19,12 +19,12 @@ export default function SchoolIntroduction() {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-16"
+      className="container mx-auto px-4 py-8 sm:py-16"
     >
-      <Card className="p-8 bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <Card className="p-4 sm:p-8 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
           <motion.div
-            className="lg:w-1/2"
+            className="w-full lg:w-1/2"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -32,34 +32,34 @@ export default function SchoolIntroduction() {
             <div className="text-sm font-semibold text-blue-600 mb-2">
               Introduction
             </div>
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
               KC GLOBAL School
             </h2>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
               KC GLOBAL School is a premier educational institution committed to
               nurturing global citizens and future leaders. With a focus on
               holistic development, we provide a world-class education that
               blends academic excellence with character building and cultural
               awareness.
             </p>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
               Our state-of-the-art facilities, experienced faculty, and
               innovative curriculum create an environment where students can
               explore their potential and develop skills for the 21st century.
             </p>
             <Link href={"/about-us"}>
-            <Button className="bg-blue-600 text-white hover:bg-blue-700 transition-colors" >
-              Learn More <ArrowRight size={16} className="ml-2" />
-            </Button>
+              <Button className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+                Learn More <ArrowRight size={16} className="ml-2" />
+              </Button>
             </Link>
           </motion.div>
           <motion.div
-            className="lg:w-1/2"
+            className="w-full lg:w-1/2"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="relative h-64 lg:h-full rounded-lg overflow-hidden">
+            <div className="relative h-48 sm:h-64 lg:h-full rounded-lg overflow-hidden">
               <Image
                 src={SCHOOLIMAGE}
                 alt="KC Global School Building"
@@ -71,7 +71,7 @@ export default function SchoolIntroduction() {
           </motion.div>
         </div>
         <motion.div
-          className="flex flex-wrap justify-center gap-8 mt-12"
+          className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 mt-8 sm:mt-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -87,10 +87,10 @@ export default function SchoolIntroduction() {
                 {stat.icon}
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-800">
+                <div className="text-xl sm:text-2xl font-bold text-gray-800">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-600">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
               </div>
             </motion.div>
           ))}

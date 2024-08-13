@@ -17,11 +17,10 @@ import { LOGO } from "../../../public";
 
 export default function Navbar() {
   const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
-
   const toggleDropdown = (id: string) => {
     setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
   };
-
+  
   const navItems = [
     {
       name: "Home",

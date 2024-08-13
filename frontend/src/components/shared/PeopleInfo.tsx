@@ -14,7 +14,7 @@ export default function PeopleInfo() {
       title: "Chairman Message",
       message:
         "Welcome to KC Global School! As Chairman, I am committed to fostering an environment where excellence, innovation, and holistic development thrive. Our goal is to empower every student with knowledge, values, and skills for a bright future. We strive to create a nurturing atmosphere that encourages curiosity and creativity. Together, let's embark on this journey of learning, growth, and success. Thank you for being a part of our KC Global School family",
-      name: "Mr. Ram Kumar Mavi",
+      name: "Mr. Shivan Jindal",
       designation: "Chairman, Kc Global School",
       reverse: false,
     },
@@ -24,7 +24,7 @@ export default function PeopleInfo() {
       title: "Principal Message",
       message:
         "Welcome to KC Global School! As the Principal, I am dedicated to guiding our students toward academic excellence and personal growth. Our school is a place where every child is encouraged to explore, learn, and thrive in a supportive environment. We emphasize not just academic achievements but also the development of character, leadership, and compassion. Together, we will build a strong foundation for a successful and fulfilling future",
-      name: "Ms. Priya Sharma",
+      name: "Mrs. Rita Anand",
       designation: "Principal, Kc Global School",
       reverse: true,
     },

@@ -12,21 +12,19 @@ import {
 
 export default function GeneralInfo() {
   const infoItems = [
-    { sl: 1, info: "NAME OF THE SCHOOL*", details: "MODERN SCHOOL" },
-    { sl: 2, info: "AFFILIATION NO.(IF APPLICABLE)", details: "2730009" },
-    { sl: 3, info: "SCHOOL CODE (IF APPLICABLE)", details: "85008" },
+    { sl: 1, info: "NAME OF THE SCHOOL*", details: "KC GLOBAL SCHOOL" },
+    { sl: 2, info: "AFFILIATION NO.", details: "GJHS-617" },
     {
-      sl: 4,
+      sl: 3,
       info: "COMPLETE ADDRESS WITH PIN CODE*",
-      details: "BARAKHAMBA ROAD NEW DELHI, NEW DELHI , DELHI - 110001",
+      details: "N.S 28 DELTA 2, GREATER NOIDA, UTTAR PRADESH 201306",
     },
-    { sl: 5, info: "PRINCIPAL NAME*", details: "DR VIJAY DATTA" },
-    { sl: 6, info: "PRINCIPAL QUALIFICATION*", details: "M.A.B.ED,M.ED,PHD" },
-    { sl: 7, info: "SCHOOL EMAIL ID*", details: "principal@modernschool.net" },
+    { sl: 4, info: "PRINCIPAL NAME*", details: "Mrs. Rita Anand" },
+    { sl: 5, info: "SCHOOL EMAIL ID*", details: "kcglobalschool@gmail.com " },
     {
-      sl: 8,
+      sl: 6,
       info: "CONTACT DETAILS (LANDLINE/MOBILE)*",
-      details: "01123311618",
+      details: "9871347339",
     },
   ];
 
