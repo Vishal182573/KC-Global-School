@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/lib/constant";
 import SchoolFacilities from "@/components/shared/home_grid";
+import VideoPreview from "@/components/shared/Video";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -45,46 +46,57 @@ export default function Home() {
   return (
     <div className="w-full overflow-x-hidden">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.section {...fadeInUp} className="mb-16">
+        <motion.section {...fadeInUp} >
           <HeroCarousel
             images={images}
           />
         </motion.section>
 
-        <motion.section {...fadeInUp} className="mb-16">
+        <Separator className="my-8" />
+
+        <motion.section {...fadeInUp} >
           <SchoolIntroduction />
         </motion.section>
 
-        <Separator className="my-16" />
+        <Separator className="my-8" />
 
-        <motion.section {...fadeInUp} className="mb-16">
+        <motion.section {...fadeInUp}>
           <PeopleInfo />
         </motion.section>
 
-        <Activities />
+        <Separator className="my-8" />
 
-        <Separator className="my-16" />
+        <motion.section {...fadeInUp}>
+          <Activities />
+        </motion.section>
+
+        <Separator className="my-8" />
 
         <motion.section {...fadeInUp} >
           <SchoolFacilities/>
         </motion.section>
         
-        <Separator className="my-16" />
+        <Separator className="my-8" />
 
-        <motion.section {...fadeInUp} className="mb-16">
+        <motion.section {...fadeInUp} >
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             School Updates
           </h2>
           <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
             <Notifications />
             <Gallery />
-            {/* <VideoPreview /> */}
           </div>
         </motion.section>
 
-        <Separator className="my-16" />
+        <Separator className="my-8" />
 
-        <motion.section {...fadeInUp} className="mb-16">
+        <motion.section {...fadeInUp}>
+        <VideoPreview />
+        </motion.section>
+
+        <Separator className="my-8" />
+
+        <motion.section {...fadeInUp} >
           <Testimonials />
         </motion.section>
 

@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BACKEND_URL } from '@/lib/constant';
 import axios from 'axios';
-import { FormInputIcon } from 'lucide-react'; // Use a chat or custom icon
+import { MessageSquarePlus, X } from 'lucide-react';
 
-const StacticAdmissionForm = () => {
-    const [isFormOpen,setIsFormOpen] = useState(false);
+const staticAdmissionForm = () => {
+  const [isFormOpen, setIsFormOpen] = useState(true);
   const [formData, setFormData] = useState({
-    name: '',
-    gender: '',
-    class: '',
-    currentSchoolName: '',
+    firstName: '',
+    lastName: '',
     fatherName: '',
     motherName: '',
     email: '',
@@ -19,23 +17,21 @@ const StacticAdmissionForm = () => {
     address: '',
   });
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await axios.post(`${BACKEND_URL}/api/form/submitform`, formData);
-      if (response.status == 200) {
+      if (response.status === 200) {
         alert('Form submitted successfully!');
         setIsFormOpen(false);
         setFormData({
-          name: '',
-          gender: '',
-          class: '',
-          currentSchoolName: '',
+          firstName: '',
+          lastName: '',
           fatherName: '',
           motherName: '',
           email: '',
@@ -51,87 +47,78 @@ const StacticAdmissionForm = () => {
     }
   };
 
-  return (
-    <div className="h-full  p-6 ">
-      <AnimatePresence>
+  return (<>
+    <AnimatePresence>
+      {isFormOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="inset-0 flex items-center justify-center z-50 p-4"
+        >
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: '0%' }}
-            exit={{ opacity: 0, x: '100%' }}
-            className="bg-black bg-opacity-50 flex items-center justify-center z-50"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            className="bg-white rounded-lg shadow-xl w-full h-ful overflow-y-auto"
           >
-            <motion.div
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{ x: '0%', opacity: 1 }}
-              exit={{ x: '100%', opacity: 0 }}
-              className="bg-white p-8 rounded-lg shadow-xl w-full "
-            >
-              <h2 className="text-2xl font-bold mb-4">Submission Form</h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Name"
-                  className="w-full p-2 border rounded"
-                  required
-                />
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border rounded"
-                  required
+            <div className="p-6 space-y-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-800">Admission Query</h2>
+                <button
+                  onClick={() => setIsFormOpen(false)}
+                  className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
                 >
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-                <input
-                  type="text"
-                  name="class"
-                  value={formData.class}
-                  onChange={handleInputChange}
-                  placeholder="Class"
-                  className="w-full p-2 border rounded"
-                  required
-                />
-                <input
-                  type="text"
-                  name="currentSchoolName"
-                  value={formData.currentSchoolName}
-                  onChange={handleInputChange}
-                  placeholder="Current School Name"
-                  className="w-full p-2 border rounded"
-                  required
-                />
-                <input
-                  type="text"
-                  name="fatherName"
-                  value={formData.fatherName}
-                  onChange={handleInputChange}
-                  placeholder="Father's Name"
-                  className="w-full p-2 border rounded"
-                  required
-                />
-                <input
-                  type="text"
-                  name="motherName"
-                  value={formData.motherName}
-                  onChange={handleInputChange}
-                  placeholder="Mother's Name"
-                  className="w-full p-2 border rounded"
-                  required
-                />
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="First Name"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Last Name"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="fatherName"
+                    value={formData.fatherName}
+                    onChange={handleInputChange}
+                    placeholder="Father's Name"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="motherName"
+                    value={formData.motherName}
+                    onChange={handleInputChange}
+                    placeholder="Mother's Name"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                </div>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Email"
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
                 <input
@@ -140,7 +127,7 @@ const StacticAdmissionForm = () => {
                   value={formData.phoneNumber}
                   onChange={handleInputChange}
                   placeholder="Phone Number"
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
                 <textarea
@@ -148,30 +135,24 @@ const StacticAdmissionForm = () => {
                   value={formData.address}
                   onChange={handleInputChange}
                   placeholder="Address"
-                  className="w-full p-2 border rounded"
+                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  rows={3}
                   required
                 ></textarea>
-                <div className="flex justify-end space-x-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsFormOpen(false)}
-                    className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  >
-                    Submit
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
+                >
+                  Submit Query
+                </button>
               </form>
-            </motion.div>
+            </div>
           </motion.div>
-      </AnimatePresence>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </>
   );
 };
 
-export default StacticAdmissionForm;
+export default staticAdmissionForm;

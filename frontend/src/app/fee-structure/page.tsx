@@ -36,7 +36,7 @@ const FeeInformation: React.FC = () => {
                 <Button
                     variant="outline"
                     className="mt-4 border-green-600 text-green-600 hover:bg-green-50"
-                    onClick={() => window.location.href = "https://www.google.com"}
+                    onClick={() => window.location.href = "https://drive.google.com/file/d/1avEl_3kIYMufYb92HHAAzEtmGPiH6hvA/view?usp=sharing"}
                 >
                     Click to View Fee Structure
                 </Button>

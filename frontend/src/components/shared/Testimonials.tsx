@@ -6,7 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import { FaQuoteLeft } from "react-icons/fa";
 import { Card, CardContent } from "@/components/ui/card";
-import { PARENT1, PARENT2 } from "../../../public";
+import { PARENT1, PARENT2, PARENT3 } from "../../../public";
 
 interface Testimonial {
   id: number;
@@ -26,10 +26,17 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    name: "MR. PRIYA SINGH",
+    name: "MRS. PRIYA SINGH",
     role: "Parent",
     image: PARENT2,
     text: "I am truly impressed with the holistic approach to education at this school. My child is not only excelling academically but also developing important life skills.",
+  },
+  {
+    id: 3,
+    name: "MRS. SUPRIYA MISHRA",
+    role: "Parent",
+    image: PARENT3,
+    text: "At KC Global School, children explore their creativity and imagination through fun and interactive activities which help them to relate and link to the world around them",
   },
   
 ];

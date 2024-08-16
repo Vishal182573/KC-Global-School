@@ -1,40 +1,33 @@
-import { Schema,model } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const formSchema = new Schema({
-    name:{
-        type:String,
-        required:true
+    firstName: {
+        type: String,
+        required: true
     },
-    gender:{
-        type:String,
-        required:true
+    lastName: {
+        type: String
     },
-    class:{
-        type:Number,
-        required:true,
+    fatherName: {
+        type: String,
+        required: true
     },
-    currentSchoolName:{
-        type:String
+    motherName: {
+        type: String,
+        required: true
     },
-    fatherName:{
-        type:String,
-        required:true
+    email: {
+        type: String,
+        required: true
     },
-    motherName:{
-        type:String,
-        required:true
+    phoneNumber: {
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        required:true
-    },
-    phoneNumber:{
-        type:String,
-        required:true
-    },
-    address:{
-        type:String
+    address: {
+        type: String,
+        required: true
     }
-},{timestamps:true});
+}, { timestamps: true });
 
-export default model("Form",formSchema);
+export default model("Form", formSchema);

@@ -8,13 +8,13 @@ const AdmissionProcedure = () => {
       
       <div className="space-y-6">
         <p className="text-gray-700">
-          Admissions Parents / Guardians should register their children / ward vide the Application Form available at the school reception. All the requirements mentioned in the Application Form must be strictly followed. Admission is purely on the basis of Merit list prepared after the entrance test followed by a personal interview, provided there is a seat vacant. After the child has qualified in the interview and admission has been confirmed, the parent must immediately deposit the necessary fees as per fee structure, failing which the offer of admission may be communicated to the next eligible candidate.
+          Parents / Guardians should register their children / ward vide the Application Form available at the school reception. All the requirements mentioned in the Application Form must be strictly followed. Admission is purely on the basis of Merit list prepared after the entrance test followed by a personal interview, provided there is a seat vacant. After the child has qualified in the interview and admission has been confirmed, the parent must immediately deposit the necessary fees as per fee structure, failing which the offer of admission may be communicated to the next eligible candidate.
         </p>
         
         <section>
           <h2 className="text-2xl font-semibold text-navy-900 mb-2">Admission Test and Interaction</h2>
           <p className="text-gray-700">
-            Admission will be based on written test and interaction. The admission tests will be conducted on the School premises and parents will be intimated about the date and time. Parents will also be given a basic guideline about what their child can be expected to be tested on. Admission will be on the basis of tests only for Standard I and above.
+            Admission will be based on written test and interaction. The admission tests will be conducted in the School premises and parents will be intimated about the date and time. Parents will also be given a basic guideline about what their child can be expected to be tested on. Admission will be on the basis of tests only for Standard I and above.
           </p>
         </section>
         
@@ -34,7 +34,7 @@ const AdmissionProcedure = () => {
         <section>
           <h2 className="text-2xl font-semibold text-navy-900 mb-2">Mode of Payment</h2>
           <p className="text-gray-700">
-          Fees are to be paid in the form of cash or demand draft drawn in favour of KC Global School, payable at Greater Noida. No out-station cheques will be accepted. Please note that the brochure and application form price is non-refundable. Further, please note that the submission of the application form does not guarantee admission of the child.
+          Fees are to be paid in the form of cash or via UPI, NEFT, RTGS in favour of KC Global School, payable at Greater Noida. No cheques will be accepted. Please note that the amount once paid is non-refundable. Further, please note that the submission of the application form does not guarantee admission of the child.
           </p>
         </section>
         

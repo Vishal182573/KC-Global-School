@@ -19,12 +19,11 @@ const AdmissionRequirements: React.FC = () => {
 
           <ul className="space-y-2">
             {[
-              "Mark Sheet of the last session attended in previous school.",
-              "Transfer Certificate in original (after confirmation of admission).",
-              "Character Certificate.",
-              "Migration Certificate (of student concerned).",
-              "Copy of Birth Certificate attested by an appropriate authority.",
-              "Parents are required to carry their aadhar cards at the time of admission."
+              "Report Card of the last session attended in previous school",
+              "Transfer Certificate in original (after confirmation of admission)",
+              "Copy of Birth Certificate",
+              "Parents are required to carry their aadhar cards at the time of admission",
+              "Passport size photo of parents and children (2 each)"
             ].map((item, index) => (
               <li key={index} className="flex items-start">
                 <span className="text-teal-500 mr-2">•</span>

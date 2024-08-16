@@ -70,8 +70,7 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
                     Welcome to KC GLOBAL SCHOOL
                   </h2>
                   <p className="text-xl mb-6">
-                    Established in 2015, we are a Co-ed school affiliated with
-                    the Central Board of Secondary Education (CBSE).
+                    Established in 2019, we are a Co-ed school with government approved affilation
                   </p>
                   <Button
                     onClick={handleClick}

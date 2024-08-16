@@ -29,10 +29,8 @@ type CarouselItem = {
 
 type Enquiry = {
   _id: string;
-  name: string;
-  gender: string;
-  class: number;
-  currentSchoolName?: string;
+  firstName: string;
+  lastName: string;
   fatherName: string;
   motherName: string;
   email: string;
@@ -362,9 +360,8 @@ const AdminPanel: React.FC = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Gender</TableHead>
-              <TableHead>Class</TableHead>
+              <TableHead>FirstName</TableHead>
+              <TableHead>LastName</TableHead>
               <TableHead>Father's Name</TableHead>
               <TableHead>Mother's Name</TableHead>
               <TableHead>Email</TableHead>
@@ -375,9 +372,8 @@ const AdminPanel: React.FC = () => {
           <TableBody>
             {enquiries.map((enquiry) => (
               <TableRow key={enquiry._id}>
-                <TableCell>{enquiry.name}</TableCell>
-                <TableCell>{enquiry.gender}</TableCell>
-                <TableCell>{enquiry.class}</TableCell>
+                <TableCell>{enquiry.firstName}</TableCell>
+                <TableCell>{enquiry.lastName}</TableCell>
                 <TableCell>{enquiry.fatherName}</TableCell>
                 <TableCell>{enquiry.motherName}</TableCell>
                 <TableCell>{enquiry.email}</TableCell>

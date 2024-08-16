@@ -33,7 +33,7 @@ export default function AboutUs() {
         >
           <h2 className="text-3xl font-bold text-blue-600 mb-4">Our Mission</h2>
           <p className="text-xl leading-relaxed">
-            WE ARE KC GLOBAL WAKE UP WITH DETERMINATION WHERE EVERY CHILD'S FUTURE IS BRIGHT
+            WE AT KC GLOBAL WAKE UP WITH DETERMINATION WHERE EVERY CHILD'S FUTURE IS BRIGHT
           </p>
         </motion.div>
 
@@ -119,6 +119,14 @@ export default function AboutUs() {
             <li className="flex items-center">
               <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
               Character Development
+            </li>
+            <li className="flex items-center">
+              <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+              Integrity and Commitment
+            </li>
+            <li className="flex items-center">
+              <svg className="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+              Respect and Service
             </li>
           </ul>
         </motion.div>

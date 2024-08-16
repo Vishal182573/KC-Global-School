@@ -8,11 +8,6 @@ import Link from "next/link";
 import { SCHOOLIMAGE } from "../../../public";
 
 export default function SchoolIntroduction() {
-  const stats = [
-    { icon: <GraduationCap size={24} />, label: "Students", value: "100+" },
-    { icon: <Users size={24} />, label: "Faculty", value: "30+" },
-    { icon: <Globe size={24} />, label: "Global Partners", value: "5+" },
-  ];
 
   return (
     <motion.div
@@ -70,31 +65,6 @@ export default function SchoolIntroduction() {
             </div>
           </motion.div>
         </div>
-        <motion.div
-          className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 mt-8 sm:mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center space-x-4"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="bg-blue-100 p-3 rounded-full text-blue-600">
-                {stat.icon}
-              </div>
-              <div>
-                <div className="text-xl sm:text-2xl font-bold text-gray-800">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-gray-600">{stat.label}</div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </Card>
     </motion.div>
   );

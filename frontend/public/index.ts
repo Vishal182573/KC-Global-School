@@ -6,5 +6,6 @@ import COCURICULLAR from "./assets/images/cocuricullar.jpg"
 import LOGO from "./assets/images/logo.jpg"
 import PARENT1 from "./assets/images/parent-1.jpg"
 import PARENT2 from "./assets/images/parent-2.jpg"
+import PARENT3 from "./assets/images/parent-3.jpg"
 
-export {SCHOOLIMAGE,CHAIRMEN,ACADEMICS,SPORTS,COCURICULLAR,LOGO,PARENT1,PARENT2};
+export {SCHOOLIMAGE,CHAIRMEN,ACADEMICS,SPORTS,COCURICULLAR,LOGO,PARENT1,PARENT2,PARENT3};

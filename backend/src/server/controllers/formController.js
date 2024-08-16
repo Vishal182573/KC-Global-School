@@ -3,13 +3,11 @@ import Form from "../models/FormModel.js";
 
 const SubmitForm = asyncHandler(async (req, res) => {
     try {
-        const { name, gender, class: studentClass, currentSchoolName, fatherName, motherName, email, phoneNumber, address } = req.body;
+        const {firstName,lastName,fatherName,motherName,email,phoneNumber,address} = req.body;
 
         const newForm = new Form({
-            name,
-            gender,
-            class: studentClass,
-            currentSchoolName,
+            firstName,
+            lastName,
             fatherName,
             motherName,
             email,

@@ -3,15 +3,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BACKEND_URL } from '@/lib/constant';
 import axios from 'axios';
-import { MessageSquarePlus, X } from 'lucide-react'; // Using a chat-like icon for the floating button
+import { MessageSquarePlus, X } from 'lucide-react';
 
 const FloatingAdmissionForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(true);
   const [formData, setFormData] = useState({
-    name: '',
-    gender: '',
-    class: '',
-    currentSchoolName: '',
+    firstName: '',
+    lastName: '',
     fatherName: '',
     motherName: '',
     email: '',
@@ -19,7 +17,7 @@ const FloatingAdmissionForm = () => {
     address: '',
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -32,10 +30,8 @@ const FloatingAdmissionForm = () => {
         alert('Form submitted successfully!');
         setIsFormOpen(false);
         setFormData({
-          name: '',
-          gender: '',
-          class: '',
-          currentSchoolName: '',
+          firstName: '',
+          lastName: '',
           fatherName: '',
           motherName: '',
           email: '',
@@ -87,44 +83,20 @@ const FloatingAdmissionForm = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleInputChange}
-                    placeholder="Name"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                  <select
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleInputChange}
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  >
-                    <option value="">Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="class"
-                    value={formData.class}
-                    onChange={handleInputChange}
-                    placeholder="Class"
+                    placeholder="First Name"
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
                   <input
                     type="text"
-                    name="currentSchoolName"
-                    value={formData.currentSchoolName}
+                    name="lastName"
+                    value={formData.lastName}
                     onChange={handleInputChange}
-                    placeholder="Current School"
+                    placeholder="Last Name"
                     className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">

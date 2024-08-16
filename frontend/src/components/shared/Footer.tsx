@@ -1,6 +1,6 @@
 "use client";
 
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { IoMail, IoCall, IoLocation } from 'react-icons/io5';
 
 export default function Footer() {
@@ -23,11 +23,17 @@ export default function Footer() {
           <h2 className="text-2xl font-bold mb-4 border-b-2 border-blue-500 pb-2">Contact Us</h2>
           <p className="flex items-center">
             <IoMail className="mr-2 text-blue-400" />
-            <a href="mailto:info@kcglobalschool.com" className="hover:text-blue-400 transition-colors">Kcglobalschool@gmail.com</a>
+            <a href="mailto:info@kcglobalschool.com" className="hover:text-blue-400 transition-colors">kcglobalschool@gmail.com</a>
           </p>
           <p className="flex items-center">
             <IoCall className="mr-2 text-blue-400" />
-            <a href="tel:+1234567890" className="hover:text-blue-400 transition-colors">+91 9871347339, +91 9871247339, +91 1204560225</a>
+            <a href="tel:+919871347339" className="hover:text-blue-400 transition-colors">+91 9871347339</a>
+          </p>
+          <p className="flex items-center pl-6">
+            <a href="tel:+919871247339" className="hover:text-blue-400 transition-colors">+91 9871247339</a>
+          </p>
+          <p className="flex items-center pl-6">
+            <a href="tel:+911204560225" className="hover:text-blue-400 transition-colors">+91 1204560225</a>
           </p>
           <p className="flex items-center">
             <IoLocation className="mr-2 text-blue-400" />
@@ -54,7 +60,7 @@ export default function Footer() {
             {[
               { icon: FaFacebook, color: 'text-blue-500', href: 'https://www.facebook.com/kcglobalschoolgn', title: "KC Global Facebook" },
               { icon: FaInstagram, color: 'text-pink-500', href: 'https://www.instagram.com/kc_global_school?igsh=ZGVrMTcwcjdiZXpq', title: "KC Global Instagram" },
-              { icon: FaYoutube, color: 'text-red-500', href: '/', title: "KC Global Youtube" },
+              { icon: FaWhatsapp, color: 'text-green-500', href: 'https://wa.me/9871247339', title: "KC Global Whatsapp" },
             ].map(({ icon: Icon, color, href, title }) => (
               <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={`${color} hover:opacity-75 transition-opacity flex space-x-2`}>
                 <Icon size={28} />
