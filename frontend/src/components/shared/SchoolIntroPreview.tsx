@@ -25,20 +25,20 @@ export default function SchoolIntroduction() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="text-sm font-semibold text-blue-600 mb-2">
-              Introduction
+              INTRODUCTION
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-              KC GLOBAL School
+              KC GLOBAL SCHOOL
             </h2>
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-              KC GLOBAL School is a premier educational institution committed to
+              KC Global School is a premier educational institute committed to
               nurturing global citizens and future leaders. With a focus on
               holistic development, we provide a world-class education that
               blends academic excellence with character building and cultural
               awareness.
             </p>
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-              Our state-of-the-art facilities, experienced faculty, and
+              Our state-of-the-art facilities, experienced faculties, and
               innovative curriculum create an environment where students can
               explore their potential and develop skills for the 21st century.
             </p>

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const FeeInformation: React.FC = () => {
     return (
-        <Card className="w-full mx-auto">
+        <Card className="w-full mx-auto bg-blue-50">
             <CardHeader>
                 <CardTitle className="text-2xl font-bold">Fee Payment Information</CardTitle>
             </CardHeader>

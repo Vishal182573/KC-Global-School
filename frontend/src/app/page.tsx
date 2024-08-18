@@ -14,6 +14,8 @@ import axios from "axios";
 import { BACKEND_URL } from "@/lib/constant";
 import SchoolFacilities from "@/components/shared/home_grid";
 import VideoPreview from "@/components/shared/Video";
+import { BANNER } from "../../public";
+import Image from "next/image";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -53,6 +55,10 @@ export default function Home() {
         </motion.section>
 
         <Separator className="my-8" />
+        <motion.section {...fadeInUp}>
+        <VideoPreview />
+        </motion.section>
+        <Separator className="my-8" />
 
         <motion.section {...fadeInUp} >
           <SchoolIntroduction />
@@ -78,23 +84,31 @@ export default function Home() {
         
         <Separator className="my-8" />
 
-        <motion.section {...fadeInUp} >
-          <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+        <motion.section {...fadeInUp}>
+      <div className="relative mb-5  rounded-lg">
+        <div className="absolute inset-0  rounded-lg">
+          <Image
+            src={BANNER} 
+            alt="Banner"
+            width={400}
+            height={200}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative z-10 bg-gray-800 bg-opacity-50 p-4 rounded-lg">
+          <h2 className="text-3xl font-bold text-white text-center">
             School Updates
           </h2>
-          <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
-            <Notifications />
-            <Gallery />
-          </div>
-        </motion.section>
+        </div>
+      </div>
+      <div className="grid gap-8 grid-cols-1 lg:grid-cols-2">
+        <Notifications />
+        <Gallery />
+      </div>
+    </motion.section>
 
         <Separator className="my-8" />
 
-        <motion.section {...fadeInUp}>
-        <VideoPreview />
-        </motion.section>
-
-        <Separator className="my-8" />
 
         <motion.section {...fadeInUp} >
           <Testimonials />

@@ -90,21 +90,21 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white shadow-lg p-4 w-full flex justify-between items-center sticky top-0 z-50"
+      className="bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg p-4 w-full flex justify-between items-center sticky top-0 z-50 h-16"
     >
       <Link href={"/"} onClick={closeAllDropdowns}>
-        <div className="flex items-center space-x-4 cursor-pointer">
-          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-            <Image
-              src={LOGO}
-              alt="School-logo"
-              width={400}
-              height={200}
-              className="rounded-full h-24 w-24 object-contain"
-            />
-          </div>
-          <h1 className="text-2xl font-bold text-gray-800">KC GLOBAL SCHOOL</h1>
-        </div>
+      <div className="flex items-center space-x-4 cursor-pointer">
+      <div className="relative h-24 w-24">
+        <Image
+          src={LOGO}
+          alt="School-logo"
+          layout="fill"
+          objectFit="contain"
+          className="rounded-full"
+        />
+      </div>
+      <h1 className="text-2xl font-bold">KC GLOBAL SCHOOL</h1>
+    </div>
       </Link>
       <nav className="hidden lg:flex space-x-2">
         {navItems.map((item) =>
@@ -113,7 +113,7 @@ export default function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 flex items-center"
+                  className=" hover:bg-blue-50 transition-colors duration-300 flex items-center"
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>
@@ -139,7 +139,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={subItem.link}
-                      className="w-full hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 p-3  flex items-center justify-between group"
+                      className="w-full hover:bg-blue-50 transition-colors duration-300 p-3  flex items-center justify-between group"
                     >
                       <span>{subItem.name}</span>
                       <motion.div
@@ -159,7 +159,7 @@ export default function Navbar() {
             <Link key={item.id} href={item.link} onClick={closeAllDropdowns}>
               <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300 flex items-center group"
+                className=" hover:bg-blue-50 transition-colors duration-300 flex items-center group"
               >
                 {item.icon}
                 <span className="ml-2">{item.name}</span>
@@ -175,7 +175,7 @@ export default function Navbar() {
               <Menu />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuContent align="end" className="w-56 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
             {navItems.map((item) => (
               <DropdownMenuItem
                 key={item.id}
@@ -201,7 +201,7 @@ export default function Navbar() {
                         </motion.div>
                       </AnimatePresence>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
                       {item.subItems.map((subItem) => (
                         <DropdownMenuItem
                           key={subItem.name}

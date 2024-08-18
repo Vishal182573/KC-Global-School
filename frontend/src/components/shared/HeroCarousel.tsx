@@ -66,12 +66,6 @@ export function HeroCarousel({ images }: HeroCarouselProps) {
                 className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
               >
                 <div className="text-white text-center max-w-3xl px-4">
-                  <h2 className="text-5xl font-bold mb-4">
-                    Welcome to KC GLOBAL SCHOOL
-                  </h2>
-                  <p className="text-xl mb-6">
-                    Established in 2019, we are a Co-ed school with government approved affilation
-                  </p>
                   <Button
                     onClick={handleClick}
                     size="lg"

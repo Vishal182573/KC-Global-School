@@ -2,13 +2,14 @@
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaChalkboardTeacher, FaLaptopCode, FaMusic, FaArtstation, FaPaintBrush, FaRunning, FaProjectDiagram, FaBuilding } from 'react-icons/fa';
-import { FaPerson } from "react-icons/fa6";
+import { FaChalkboardTeacher, FaLaptopCode, FaMusic, FaArtstation, FaPaintBrush, FaRunning, FaProjectDiagram, FaBuilding, FaRobot } from 'react-icons/fa';
+import { FaFootball } from "react-icons/fa6";
+import { BANNER } from "../../../public";
 
 export default function SchoolInfrastructure() {
   const facilities = [
     {
-      imageSrc: "https://drive.google.com/uc?export=download&id=18XaJe-7INknqAnn_qqw6_huA8yjRG7Pz",
+      imageSrc: "https://drive.google.com/uc?export=download&id=1pzG2yORjcoMZQBq7yjFD8rXycIyYsQNK",
       imageAlt: "classroom",
       title: "Classroom",
       icon: <FaChalkboardTeacher className="text-4xl mb-4 text-blue-600" />,
@@ -17,7 +18,7 @@ export default function SchoolInfrastructure() {
       reverse: false,
     },
     {
-      imageSrc: "https://drive.google.com/uc?export=download&id=18g4J63kZ_KSR4rRqaHw5H6KG2wWt6w8n",
+      imageSrc: "https://drive.google.com/uc?export=download&id=1YKake2JEi6164Ks-ZgHfM3ckFWhIQSJy",
       imageAlt: "computer lab",
       title: "Computer Lab",
       icon: <FaLaptopCode className="text-4xl mb-4 text-green-600" />,
@@ -44,16 +45,34 @@ export default function SchoolInfrastructure() {
       reverse: true,
     },
     {
+      imageSrc: "https://drive.google.com/uc?export=download&id=1WVSm0IlwsWsnNwC1PyUuM_CT-PZ52RTd",
+      imageAlt: "Playstation",
+      title: "Play Station",
+      icon: <FaFootball className="text-4xl mb-4 text-teal-600" />,
+      message:
+        "Our play activities promote learning by engaging students in interactive, hands-on experiences that make concepts fun and memorable. Through structured play, students develop critical thinking, problem-solving, and social skills in a dynamic, supportive environment. These activities encourage creativity and collaboration, allowing students to explore ideas and work together while learning in an enjoyable, stress-free way",
+      reverse: false,
+    },
+    {
       imageSrc: "https://drive.google.com/uc?export=download&id=18l39iTY23upmFW3iM9Afd9v-7CUXpMRA",
       imageAlt: "Artroom",
       title: "Art Room",
       icon: <FaPaintBrush className="text-4xl mb-4 text-yellow-600" />,
       message:
         "KC Global School's art room is a bright, airy space designed to inspire creativity. The room is well-lit, with ample space for students to work comfortably. It is envisioned as a place where imagination can flourish and artistic talents can be nurtured. Equipped with easels, pottery wheels, and a variety of art supplies, the room caters to various artistic mediums. Students explore painting, sculpture, printmaking, and digital art under the guidance of experienced art educators. Regular art exhibitions, visiting artist workshops, and collaborative mural projects enhance the artistic journey of our students, encouraging self-expression and visual literacy.",
+      reverse: true,
+    },
+    {
+      imageSrc: "https://drive.google.com/uc?export=download&id=18qTzbemwhvy26H2RydBrKKNfN7eAhbAZ",
+      imageAlt: "Virtualsimulation",
+      title: "Virtual Simulation",
+      icon: <FaRobot className="text-4xl mb-4 text-teal-600" />,
+      message:
+        "Our virtual simulation classes elevate learning by immersing students in realistic, interactive scenarios that make complex concepts more accessible. With advanced simulation software, students can explore virtual labs, conduct experiments, and practice real-world skills in a safe, controlled environment. These classes offer hands-on experience without physical materials and foster collaboration through simulated projects. By incorporating 3D models, virtual reality, and interactive simulations, we cater to diverse learning styles, enhancing understanding and preparing students for real-life challenges",
       reverse: false,
     },
     {
-      imageSrc: "https://drive.google.com/uc?export=download&id=18YDaqR3pwDGE3MMkIcTYGB0Y_4AAvAhb",
+      imageSrc: "https://drive.google.com/uc?export=download&id=1NsZb-LHhA156BwTcaVvIHq4MIiPFenmc",
       imageAlt: "Playground",
       title: "Play Ground",
       icon: <FaRunning className="text-4xl mb-4 text-red-600" />,
@@ -62,7 +81,7 @@ export default function SchoolInfrastructure() {
       reverse: true,
     },
     {
-      imageSrc: "https://drive.google.com/uc?export=download&id=18XgbolAsZSBnHe1_OCMt58SijNHaso_S",
+      imageSrc: "https://drive.google.com/uc?export=download&id=16GlRl1H9xDH2LKPwOfCVjt8tNw2387FC",
       imageAlt: "Reception",
       title: "Reception",
       icon: <FaBuilding className="text-4xl mb-4 text-red-600" />,
@@ -71,7 +90,7 @@ export default function SchoolInfrastructure() {
       reverse: false,
     },
     {
-      imageSrc: "https://drive.google.com/uc?export=download&id=18qTzbemwhvy26H2RydBrKKNfN7eAhbAZ",
+      imageSrc: "https://drive.google.com/uc?export=download&id=1tDDDy3UvUURi36eUQB0AfeivzvvuH_kU",
       imageAlt: "Smartclass",
       title: "Smart Class",
       icon: <FaProjectDiagram className="text-4xl mb-4 text-teal-600" />,
@@ -82,20 +101,27 @@ export default function SchoolInfrastructure() {
   ];
 
   return (
-    <div className="space-y-16 bg-gray-100 py-16 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-5xl font-bold text-gray-800 mb-4">
+    <div className="space-y-16 py-16 px-6">
+      <header className="relative py-16">
+        <div className="absolute inset-0">
+          <Image
+            src={BANNER}
+            alt="Background image for KC Global School"
+            layout="fill"
+            objectFit="cover"
+            className="w-full  object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
+        <div className="container relative mx-auto px-4 text-center">
+          <h2 className="text-5xl font-bold mb-4 text-white">
           School Infrastructure
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Discover our state-of-the-art facilities designed to nurture growth, creativity, and excellence.
+        <p className="text-xl text-white max-w-3xl mx-auto">
+          Discover our state-of-the-art facilities designed
         </p>
-      </motion.div>
+        </div>
+      </header>
       {facilities.map((facility, index) => (
         <motion.div
           key={index}

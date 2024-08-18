@@ -4,11 +4,11 @@ import React from 'react';
 const SchoolFacilities = () => {
   const facilities = [
     { name: 'Computer Lab', image: "https://drive.google.com/uc?export=download&id=18X8amix_ucfx0C-8LmJMe7T-3fy3_Cen" },
-    { name: 'Playground', image: 'https://drive.google.com/uc?export=download&id=18acKeS0Y8Lt7Xd6DFsFG2Y4qPRjPdjB0' },
-    { name: 'Activity Room', image: 'https://drive.google.com/uc?export=download&id=18nRStxXqIpPVxjbqfeW5GCrYGPQfJArS' },
-    { name: 'Yoga Class', image: 'https://drive.google.com/uc?export=download&id=18ql4Pdx90-wKsyWwAXNcaPg_WMypNKvl' },
-    { name: 'Dance Class', image: 'https://drive.google.com/uc?export=download&id=18jUNkuHCowDx43N2vBr6p4qqwmUDgEv6' },
-    { name: 'Morning Assembly', image: 'https://drive.google.com/uc?export=download&id=18sOmhItWrk08gN6Whpx-JJRbJC4_bJM6' },
+    { name: 'Playground', image: 'https://drive.google.com/uc?export=download&id=1NsZb-LHhA156BwTcaVvIHq4MIiPFenmc' },
+    { name: 'Music Room', image: 'https://drive.google.com/uc?export=download&id=18nRStxXqIpPVxjbqfeW5GCrYGPQfJArS' },
+    { name: 'Smart Class', image: 'https://drive.google.com/uc?export=download&id=1tDDDy3UvUURi36eUQB0AfeivzvvuH_kU' },
+    { name: 'Activity Room', image: 'https://drive.google.com/uc?export=download&id=1i4SxL4V0oB9cmJVkviO4m1ADvDSiZ95v' },
+    { name: 'Play Station', image: 'https://drive.google.com/uc?export=download&id=1WVSm0IlwsWsnNwC1PyUuM_CT-PZ52RTd' },
   ];
 
   return (

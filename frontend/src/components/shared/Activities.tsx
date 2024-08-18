@@ -12,7 +12,7 @@ const categories = [
   {
     title: "ACADEMICS",
     description: "Fostering intellectual growth and academic excellence.",
-    image: ACADEMICS,
+    image: "https://drive.google.com/uc?export=download&id=1WGtEZlsP5wN62mVQoKxGDUx5JweaqWdk",
     link: "/academics",
     icon: <BookOpen className="w-10 h-10 text-blue-500" />,
     activities: [
@@ -25,7 +25,7 @@ const categories = [
   {
     title: "SPORTS",
     description: "Promoting physical fitness and sportsmanship.",
-    image: SPORTS,
+    image: "https://drive.google.com/uc?export=download&id=1YG8pZUZRaH_HkJF8HhtQB2e_dY1LVP0h",
     link: "/sports",
     icon: <Trophy className="w-10 h-10 text-yellow-500" />,
     activities: ["Cricket Team", "Basketball Club", "Swimming", "Athletics"],
@@ -33,7 +33,7 @@ const categories = [
   {
     title: "CO-CURRICULAR",
     description: "Nurturing creativity and personal development.",
-    image: COCURICULLAR,
+    image: "https://drive.google.com/uc?export=download&id=10Dcj-cp7q14ATYLSGZiY3eJ4ddgys1hL",
     link: "/co-curricular",
     icon: <Palette className="w-10 h-10 text-purple-500" />,
     activities: [

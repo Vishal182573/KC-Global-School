@@ -7,7 +7,6 @@ export default function Footer() {
   const quickLinks = [
     { name: 'About Us', url: '/about-us' },
     { name: 'Admissions', url: '/admission' },
-    { name: 'Academic Programs', url: '/academics' },
     { name: 'Fee Structure', url: '/fee-structure' },
     { name: 'Faculty Messages', url: '/messages' },
     { name: 'Campus Infrastructure', url: '/facilities' },

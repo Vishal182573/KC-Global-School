@@ -10,12 +10,12 @@ export default function PeopleInfo() {
   const people = [
     {
       imageSrc: CHAIRMEN,
-      imageAlt: "Chairman",
-      title: "Chairman Message",
+      imageAlt: "Chairperson",
+      title: "Chairperson Message",
       message:
-        "Welcome to KC Global School! As Chairman, I am committed to fostering an environment where excellence, innovation, and holistic development thrive. Our goal is to empower every student with knowledge, values, and skills for a bright future. We strive to create a nurturing atmosphere that encourages curiosity and creativity. Together, let's embark on this journey of learning, growth, and success. Thank you for being a part of our KC Global School family",
+        "Welcome to KC Global School! As Chairperson, I am committed to fostering an environment where excellence, innovation, and holistic development thrive. Our goal is to empower every student with knowledge, values, and skills for a bright future. We strive to create a nurturing atmosphere that encourages curiosity and creativity. Together, let's embark on this journey of learning, growth, and success. Thank you for being a part of our KC Global School family",
       name: "Mr. Shivam Jindal",
-      designation: "Chairman, KC Global School",
+      designation: "Chairperson, KC Global School",
       reverse: false,
     },
     {
@@ -41,7 +41,7 @@ export default function PeopleInfo() {
           School Leadership
         </h2>
         <p className="text-xl text-gray-600">
-          Guiding our institution towards excellence
+          Guiding our institute towards excellence
         </p>
       </motion.div>
       {people.map((person, index) => (

@@ -1,10 +1,25 @@
 import React from 'react';
+import { BANNER } from '../../../public';
+import Image from 'next/image';
 
 const AdmissionProcedure = () => {
   return (
-    <div className="bg-white p-8  mx-auto">
-      <h3 className="text-teal-500 font-semibold mb-2">KC GLOBAL SCHOOL</h3>
-      <h1 className="text-4xl font-bold text-navy-900 mb-6">Admission Procedure</h1>
+    <div className="p-8  mx-auto">
+      <header className="relative py-16 mb-6">
+    <div className="absolute inset-0">
+      <Image
+        src={BANNER}
+        alt="Background image for KC Global School"
+        layout="fill"
+        objectFit="cover"
+        className="w-full  object-cover"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+    </div>
+    <div className="container relative mx-auto px-4 text-center">
+      <h1 className="text-5xl font-bold mb-4 text-white">ADMISSION PROCEDURE</h1>
+    </div>
+  </header>
       
       <div className="space-y-6">
         <p className="text-gray-700">
@@ -14,7 +29,7 @@ const AdmissionProcedure = () => {
         <section>
           <h2 className="text-2xl font-semibold text-navy-900 mb-2">Admission Test and Interaction</h2>
           <p className="text-gray-700">
-            Admission will be based on written test and interaction. The admission tests will be conducted in the School premises and parents will be intimated about the date and time. Parents will also be given a basic guideline about what their child can be expected to be tested on. Admission will be on the basis of tests only for Standard I and above.
+            Admission will be based on written test and interaction. The admission tests will be conducted in the School premises and parents will be intimated about the date and time. Parents will also be given a basic guideline about what their child can be expected to be tested on.
           </p>
         </section>
         

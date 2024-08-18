@@ -4,9 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const AdmissionRequirements: React.FC = () => {
   return (
     <div className="container mx-auto p-4">
-      <Card className="w-full mx-auto">
+      <Card className="w-full mx-auto bg-blue-50">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center text-teal-500">KC GLOBAL SCHOOL</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center text-blue-500 ">KC GLOBAL SCHOOL</CardTitle>
         </CardHeader>
         <CardContent>
           <h1 className="text-4xl font-bold text-navy-blue mb-6">Document Required</h1>

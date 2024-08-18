@@ -3,14 +3,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { BANNER } from "../../../public";
 
 export default function AboutUs() {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="min-h-screen">
       <header className="relative py-16">
         <div className="absolute inset-0">
           <Image
-            src="https://drive.google.com/uc?export=download&id=18YDaqR3pwDGE3MMkIcTYGB0Y_4AAvAhb" // Replace with your actual image path
+            src={BANNER}
             alt="Background image for KC Global School"
             layout="fill"
             objectFit="cover"
@@ -29,9 +30,9 @@ export default function AboutUs() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-lg shadow-xl p-8 mb-16"
+          className="bg-gradient-to-r bg-blue-800 text-white rounded-lg shadow-xl p-8 mb-16"
         >
-          <h2 className="text-3xl font-bold text-blue-600 mb-4">Our Mission</h2>
+          <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           <p className="text-xl leading-relaxed">
             WE AT KC GLOBAL WAKE UP WITH DETERMINATION WHERE EVERY CHILD'S FUTURE IS BRIGHT
           </p>
@@ -45,7 +46,7 @@ export default function AboutUs() {
           >
             <h2 className="text-3xl font-semibold mb-6 text-blue-600">About Us</h2>
             <p className="text-lg mb-6 leading-relaxed">
-              KC Global School is a public, co-educational institution known for providing a top-notch education in English. We are committed to creating a welcoming and inclusive environment where students from all backgrounds can thrive. Our school offers a broad curriculum designed to cater to the individual needs and interests of each student.
+              KC Global School is a private, co-educational institute known for providing a top-notch education in English. We are committed to create a welcoming and inclusive environment where students from all backgrounds can thrive. Our school offers a broad curriculum designed to cater to the individual needs and interests of each student.
             </p>
             <p className="text-lg mb-6 leading-relaxed">
               We emphasize not only academic excellence but also the importance of personal growth and development. Our state-of-the-art facilities and modern teaching methods help students stay engaged and enthusiastic about learning.
@@ -59,7 +60,7 @@ export default function AboutUs() {
             className="bg-white rounded-lg shadow-lg overflow-hidden"
           >
             <Image
-              src="https://drive.google.com/uc?export=download&id=18XgbolAsZSBnHe1_OCMt58SijNHaso_S"  // Replace with actual image path
+              src="https://drive.google.com/uc?export=download&id=1GY-umVIhd4gvox5B2hT3uY7Djh8-DBbW"  // Replace with actual image path
               alt="KC Global School"
               width={600}
               height={400}

@@ -12,19 +12,19 @@ import {
 
 export default function GeneralInfo() {
   const infoItems = [
-    { sl: 1, info: "NAME OF THE SCHOOL*", details: "KC GLOBAL SCHOOL" },
+    { sl: 1, info: "NAME OF THE SCHOOL", details: "KC GLOBAL SCHOOL" },
     { sl: 2, info: "AFFILIATION NO.", details: "GJHS-617" },
     {
       sl: 3,
-      info: "COMPLETE ADDRESS WITH PIN CODE*",
+      info: "COMPLETE ADDRESS WITH PIN CODE",
       details: "N.S 28 DELTA 2, GREATER NOIDA, UTTAR PRADESH 201306",
     },
-    { sl: 4, info: "PRINCIPAL NAME*", details: "Mrs. Rita Anand" },
-    { sl: 5, info: "SCHOOL EMAIL ID*", details: "kcglobalschool@gmail.com " },
+    { sl: 4, info: "PRINCIPAL NAME", details: "Mrs. Rita Anand" },
+    { sl: 5, info: "SCHOOL EMAIL ID", details: "kcglobalschool@gmail.com " },
     {
       sl: 6,
-      info: "CONTACT DETAILS (LANDLINE/MOBILE)*",
-      details: "9871347339",
+      info: "CONTACT DETAILS (LANDLINE/MOBILE)",
+      details: "+91 9871347339, +91 9871247339, +91 1204560225",
     },
   ];
 
@@ -46,7 +46,7 @@ export default function GeneralInfo() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>SL No.</TableHead>
+            <TableHead>S. No.</TableHead>
             <TableHead>INFORMATION</TableHead>
             <TableHead>DETAILS</TableHead>
           </TableRow>

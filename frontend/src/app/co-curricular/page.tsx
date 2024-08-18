@@ -17,9 +17,9 @@ const coActivities = [
     description: "Painting, Sculpture, and Digital Art workshops",
   },
   {
-    title: "Media & Communication",
+    title: "Life skills & Leadership",
     icon: <Film className="w-6 h-6" />,
-    description: "Journalism, Photography, and Video Production",
+    description: "Moral values, Debate and Leadership",
   },
   {
     title: "STEM Clubs",
