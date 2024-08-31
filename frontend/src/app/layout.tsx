@@ -14,8 +14,19 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "KC GLOBAL SCHOOL",
-  description:
-    "Discover a world of opportunities at Kc Global School. Join us in shaping the future.",
+  description:"Discover a world of opportunities at Kc Global School. Join us in shaping the future.",
+  icons:{
+    icon:[
+      '/favicon.ico?v=1'
+    ],
+    apple:[
+      '/apple-touch-icon.png?v=4'
+    ],
+    shortcut:[
+      '/apple-touch-icon.png'
+    ]
+  },
+  manifest:'/site.webmanifest'
 };
 
 export default function RootLayout({

@@ -23,17 +23,31 @@ import Link from "next/link";
 import { Home, Building, Phone, Mail } from "lucide-react";
 import { LOGO } from "../../../public";
 
+interface NavItem {
+  name: string;
+  id: string;
+  icon: JSX.Element;
+  link?: string;
+  subItems?: { name: string; link: string }[];
+}
+
 export default function Navbar() {
-  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>(
-    {}
-  );
+  const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [mobileSubMenus, setMobileSubMenus] = useState<Record<string, boolean>>({});
 
   const toggleDropdown = (id: string) => {
-    setOpenDropdowns((prev) => ({ ...prev, [id]: !prev[id] }));
+    setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const closeAllDropdowns = () => {
     setOpenDropdowns({});
+    setMobileMenuOpen(false);
+    setMobileSubMenus({});
+  };
+
+  const toggleMobileSubMenu = (id: string) => {
+    setMobileSubMenus(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const navItems = [
@@ -93,18 +107,18 @@ export default function Navbar() {
       className="bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg p-4 w-full flex justify-between items-center sticky top-0 z-50 h-16"
     >
       <Link href={"/"} onClick={closeAllDropdowns}>
-      <div className="flex items-center space-x-4 cursor-pointer">
-      <div className="relative h-24 w-24">
-        <Image
-          src={LOGO}
-          alt="School-logo"
-          layout="fill"
-          objectFit="contain"
-          className="rounded-full"
-        />
-      </div>
-      <h1 className="text-2xl font-bold">KC GLOBAL SCHOOL</h1>
-    </div>
+        <div className="flex items-center space-x-4 cursor-pointer">
+          <div className="relative h-24 w-24">
+            <Image
+              src={LOGO}
+              alt="School-logo"
+              layout="fill"
+              objectFit="contain"
+              className="rounded-full"
+            />
+          </div>
+          <h1 className="text-2xl font-bold">KC GLOBAL SCHOOL</h1>
+        </div>
       </Link>
       <nav className="hidden lg:flex space-x-2">
         {navItems.map((item) =>
@@ -113,7 +127,7 @@ export default function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className=" hover:bg-blue-50 transition-colors duration-300 flex items-center"
+                  className="hover:bg-blue-50 transition-colors duration-300 flex items-center"
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>
@@ -139,7 +153,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={subItem.link}
-                      className="w-full hover:bg-blue-50 transition-colors duration-300 p-3  flex items-center justify-between group"
+                      className="w-full hover:bg-blue-50 transition-colors duration-300 p-3 flex items-center justify-between group"
                     >
                       <span>{subItem.name}</span>
                       <motion.div
@@ -159,7 +173,7 @@ export default function Navbar() {
             <Link key={item.id} href={item.link} onClick={closeAllDropdowns}>
               <Button
                 variant="ghost"
-                className=" hover:bg-blue-50 transition-colors duration-300 flex items-center group"
+                className="hover:bg-blue-50 transition-colors duration-300 flex items-center group"
               >
                 {item.icon}
                 <span className="ml-2">{item.name}</span>
@@ -169,7 +183,7 @@ export default function Navbar() {
         )}
       </nav>
       <div className="lg:hidden">
-        <DropdownMenu>
+        <DropdownMenu open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
               <Menu />
@@ -180,56 +194,55 @@ export default function Navbar() {
               <DropdownMenuItem
                 key={item.id}
                 className="p-0"
-                onSelect={closeAllDropdowns}
+                onSelect={(e) => {
+                  e.preventDefault();
+                  if (!item.subItems) {
+                    closeAllDropdowns();
+                  }
+                }}
               >
                 {item.subItems ? (
-                  <DropdownMenu onOpenChange={() => toggleDropdown(item.id)}>
-                    <DropdownMenuTrigger className="flex items-center w-full p-3 justify-between">
+                  <div className="w-full">
+                    <button
+                      onClick={() => toggleMobileSubMenu(item.id)}
+                      className="flex items-center w-full p-3 justify-between"
+                    >
                       <div className="flex items-center">
                         {item.icon}
                         <span className="ml-2">{item.name}</span>
                       </div>
                       <AnimatePresence initial={false} mode="wait">
                         <motion.div
-                          key={openDropdowns[item.id] ? "chevronUp" : "chevronDown"}
+                          key={mobileSubMenus[item.id] ? "chevronUp" : "chevronDown"}
                           initial={{ rotate: 0 }}
-                          animate={{ rotate: openDropdowns[item.id] ? 180 : 0 }}
+                          animate={{ rotate: mobileSubMenus[item.id] ? 180 : 0 }}
                           exit={{ rotate: 0 }}
                           transition={{ duration: 0.2 }}
                         >
                           <ChevronDown size={16} />
                         </motion.div>
                       </AnimatePresence>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-                      {item.subItems.map((subItem) => (
-                        <DropdownMenuItem
-                          key={subItem.name}
-                          className="p-0"
-                          onSelect={closeAllDropdowns}
-                        >
+                    </button>
+                    {mobileSubMenus[item.id] && (
+                      <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white">
+                        {item.subItems.map((subItem) => (
                           <Link
+                            key={subItem.name}
                             href={subItem.link}
-                            className="w-full p-3 flex items-center justify-between group"
+                            className="block w-full p-3 hover:bg-gray-700 transition-colors duration-200"
+                            onClick={closeAllDropdowns}
                           >
                             <span>{subItem.name}</span>
-                            <motion.div
-                              className="opacity-0 group-hover:opacity-100"
-                              initial={{ rotate: -45, x: -5 }}
-                              animate={{ rotate: 0, x: 0 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <ArrowUpRight size={16} />
-                            </motion.div>
                           </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <Link
                     href={item.link}
                     className="flex items-center w-full p-3 justify-between group"
+                    onClick={closeAllDropdowns}
                   >
                     <div className="flex items-center">
                       {item.icon}
