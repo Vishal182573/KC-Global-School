@@ -8,16 +8,11 @@ import { MessageSquarePlus, X } from 'lucide-react';
 const FloatingAdmissionForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(true);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    fatherName: '',
-    motherName: '',
-    email: '',
+    Name: '',
     phoneNumber: '',
-    address: '',
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -30,13 +25,8 @@ const FloatingAdmissionForm = () => {
         alert('Form submitted successfully!');
         setIsFormOpen(false);
         setFormData({
-          firstName: '',
-          lastName: '',
-          fatherName: '',
-          motherName: '',
-          email: '',
+          Name: '',
           phoneNumber: '',
-          address: '',
         });
       } else {
         alert('Form submission failed. Please try again.');
@@ -47,118 +37,71 @@ const FloatingAdmissionForm = () => {
     }
   };
 
-  return (<>
-    <button
-      onClick={() => setIsFormOpen(true)}
-      className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-full shadow-lg flex items-center justify-center z-50 transition-colors duration-300"
-    >
-      <MessageSquarePlus className="w-6 h-6" />
-    </button>
-  
-    <AnimatePresence>
-      {isFormOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-        >
+  return (
+    <>
+      <button
+        onClick={() => setIsFormOpen(true)}
+        className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white font-bold p-4 rounded-full shadow-lg flex items-center justify-center z-50 transition-colors duration-300"
+      >
+        <MessageSquarePlus className="w-6 h-6" />
+      </button>
+
+      <AnimatePresence>
+        {isFormOpen && (
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 50, opacity: 0 }}
-            className="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
           >
-            <div className="p-6 space-y-4">
-              <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-800">Admission Query</h2>
-                <button
-                  onClick={() => setIsFormOpen(false)}
-                  className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              className="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-6 space-y-4">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-2xl font-bold text-gray-800">Admission Query</h2>
+                  <button
+                    onClick={() => setIsFormOpen(false)}
+                    className="text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input
+                    type="text"
+                    name="Name"
+                    value={formData.Name}
+                    onChange={handleInputChange}
+                    placeholder="Name"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange}
+                    placeholder="Phone Number"
+                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
+                  >
+                    Submit Query
+                  </button>
+                </form>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    placeholder="First Name"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    placeholder="Last Name"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="fatherName"
-                    value={formData.fatherName}
-                    onChange={handleInputChange}
-                    placeholder="Father's Name"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="motherName"
-                    value={formData.motherName}
-                    onChange={handleInputChange}
-                    placeholder="Mother's Name"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phoneNumber"
-                  value={formData.phoneNumber}
-                  onChange={handleInputChange}
-                  placeholder="Phone Number"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-                <textarea
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  placeholder="Address"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  rows={3}
-                  required
-                ></textarea>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-300"
-                >
-                  Submit Query
-                </button>
-              </form>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
